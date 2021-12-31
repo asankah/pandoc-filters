@@ -1,0 +1,24 @@
+<h1 id="admonitions-example">Admonitions example</h1>
+<p>The example can be invoked as:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pandoc</span> <span class="at">--lua-filter</span><span class="op">=</span>../../filters/admonitions.lua note.md <span class="at">-o</span> note.html</span></code></pre></div>
+<aside class="note">
+<p>This is a note.</p>
+<p>It can contain multiple paragraphs.</p>
+</aside>
+<aside class="note">
+<p>This is a single-paragraph admonition.</p>
+</aside>
+<p>This is not a part of the admonition.</p>
+<aside and="attributes" class="note with additional classes">
+<p>This is another note.</p>
+</aside>
+<aside class="Warning">
+<p>Note class is case-insensitive. However the resulting <code>&lt;aside&gt;</code> element will have a <code>class=""</code> attribute with the case preserved.</p>
+</aside>
+<aside class="important">
+<p>When using a single-paragraph admonition, the resulting <code>&lt;aside&gt;</code> element will have a class with a <strong>lower case</strong> name corresponding to the tag.</p>
+</aside>
+<p>THIS: IS NOT AN ADMONITION. It’s just a paragraph starting with some upper case words.</p>
+<aside class="aside">
+<p>Aside also works.</p>
+</aside>
