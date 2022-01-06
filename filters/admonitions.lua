@@ -1,13 +1,13 @@
 
 if FORMAT:match "html5" then
-  text = require "text"
+  local text = require "text"
 
   -- This is where you would add admonition types.
   local AdmonitionClasses = {
     note=1, warning=1, important=1, aside=1
   }
 
-  function rawAside(classes, attributes, contents)
+  local function rawAside(classes, attributes, contents)
     local str_attributes = {}
     attributes["class"] = table.concat(classes, " ")
     for k, v in pairs(attributes) do
