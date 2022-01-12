@@ -19,7 +19,8 @@ if FORMAT:match "html5" then
     return rv
   end
 
-  -- Converts ::: note ::: to an <aside> element in HTML.
+  -- Converts ::: note ::: to an <aside> element in HTML if it contains one of
+  -- the admonition classes.
   function Div(elem)
     for i, class in pairs(elem.attr.classes) do
       if AdmonitionClasses[text.lower(class)] then
@@ -28,6 +29,8 @@ if FORMAT:match "html5" then
     end
   end
 
+  -- Look for NOTE:, WARNING:, etc.. at the start of paragraphs. If so
+  -- "upgrades" it to an admonition.
   function Para(elem)
     if #elem.content == 0 or elem.content[1].tag ~= "Str" then
       return
