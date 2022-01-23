@@ -44,3 +44,28 @@ pandoc --resource-path /path/to/pandoc-filters/filters --lua-filter=admonitions.
 
 Currently it recognizes the following admonitions: **note**, **warning**, **important**, **aside**.
 
+## Wiki Links
+
+Converts some Wiki like links so that they will function correctly when used in converted HTML.
+
+Example:
+
+``` markdown
+
+This is a [[Wiki Style]] link.
+
+Also supports [[Links With|Separate Descriptions]] like this one.
+```
+
+Converts to:
+
+``` html
+<p>This is a <a href="Wiki Style.html">Wiki Style</a> link.</p>
+<p>Also supports <a href="Links With.html">Separate Descriptions<a/> like this one.</p>
+```
+
+Use as:
+
+```sh
+pandoc --resource-path /path/to/pandoc-filters/filters --lua-filter=wikilinks.lua -t html my-doc.md
+```
