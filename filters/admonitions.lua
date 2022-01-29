@@ -1,5 +1,5 @@
 
-if FORMAT:match "html5" then
+if FORMAT:match "html" or then
   local text = require "text"
 
   -- This is where you would add admonition types.
