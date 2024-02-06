@@ -33,7 +33,7 @@ if FORMAT:match "html" then
   end
 
   -- Filter out runs of inlines together rather than individual AST nodes. It
-  -- is poosible for links to contain whitespace which would be split into
+  -- is possible for links to contain whitespace which would be split into
   -- separate `Str` and `Space` nodes in the AST.
   function Inlines(inlines)
     local is_in_link = false
