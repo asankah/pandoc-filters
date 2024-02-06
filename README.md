@@ -69,3 +69,38 @@ Use as:
 ```sh
 pandoc --resource-path /path/to/pandoc-filters/filters --lua-filter=wikilinks.lua -t html my-doc.md
 ```
+
+## Block quotes with captions
+
+Emits `<figure>` elements for blockquotes that include a citation.
+
+A citation has to start with two dashes (`--`). If the [`smart` extension](https://pandoc.org/MANUAL.html#typography)
+is enabled, then the first dash needs to be escaped.
+
+``` markdown
+This is a regular paragraph.
+
+> Blockquotes look like this.
+>
+> \-- And this is the citation. It has to start with two dashes.
+```
+
+Converts to:
+
+``` html
+<p>This is a regular paragraph.</p>
+<blockquote>
+<figure>
+<p>BLockquotes look like this.</p>
+<figcaption>
+<p>-- And this is the citation. It has to start with two dashes.</p>
+</figcaption>
+</figure>
+</blockquote>
+```
+
+Use as:
+
+```sh
+pandoc --lua-filter=quotes.lua -t html my-doc.md
+```
