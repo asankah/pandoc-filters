@@ -5,13 +5,13 @@ if FORMAT:match "html" then
     -- Check whether the last block starts with two dashes.
     local els = content.content
 
-    if #els == 0 then
+    if #els < 2 then
       return
     end
 
     local last_block = els[#els]
     local last_block_text = pandoc.utils.stringify(last_block)
-    if string.sub(last_block_text, 1, 3) ~= "-- " then
+    if string.match(last_block_text, "^[-]+%s") or string.match(last_block_text, "^[-]+ ") then
       return
     end
 
@@ -20,6 +20,6 @@ if FORMAT:match "html" then
     els:insert(pandoc.RawBlock("html", "</figcaption>"))
     els:insert(pandoc.RawBlock("html", "</figure>"))
 
-    return pandoc.BlockQuote(els)
+    return els
   end
 end
